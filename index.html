@@ -14,7 +14,7 @@
             <h1>Monitoramento IOT - Temperatura</h1>
             <p class="subtitle">Bem-vindo ao sistema de monitoramento de temperatura</p>
         </header>
-        
+
         <main class="sensor-dashboard">
             <div class="sensor-card">
                 <div class="sensor-info">
@@ -26,7 +26,7 @@
                     <span class="sensor-value" id="humidity">0%</span>
                 </div>
                 <div class="controls">
-                    <button class="update-btn" id="updateBtn">
+                    <button class="update-btn" id="updateBtn" onclick="updateData()">
                         <span class="btn-icon">🔄</span>
                         Atualizar
                     </button>
@@ -40,5 +40,5 @@
     </div>
 
 </body>
-
+<script src="script.js"></script>
 </html>
