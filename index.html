@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Monitoramento</title>
 </head>
-<body>
 
-    <h1>Monitoramento IOT - Temperatura</h1>
-    <p>Bem-vindo ao sistema de monitoramento de temperatura.</p>
+<body>
+    <div class="container">
+        <header>
+            <h1>Monitoramento IOT - Temperatura</h1>
+            <p class="subtitle">Bem-vindo ao sistema de monitoramento de temperatura</p>
+        </header>
+        
+        <main class="sensor-dashboard">
+            <div class="sensor-card">
+                <div class="sensor-info">
+                    <span class="sensor-label">Temperatura Atual:</span>
+                    <span class="sensor-value" id="temperature">0.0 °C</span>
+                </div>
+                <div class="sensor-info">
+                    <span class="sensor-label">Umidade Atual:</span>
+                    <span class="sensor-value" id="humidity">0%</span>
+                </div>
+                <div class="controls">
+                    <button class="update-btn" id="updateBtn">
+                        <span class="btn-icon">🔄</span>
+                        Atualizar
+                    </button>
+                </div>
+                <div class="status">
+                    <span class="status-indicator online"></span>
+                    <span class="status-text">Sistema Online</span>
+                </div>
+            </div>
+        </main>
+    </div>
 
 </body>
+
 </html>
