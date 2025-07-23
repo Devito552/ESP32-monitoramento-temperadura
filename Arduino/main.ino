@@ -2,8 +2,8 @@
 #include <PubSubClient.h> // Necessário para fazer comunicação broker
 
 // Configurar a conexão com Wifi
-const char *SSID = "AAPM-510";
-const char *PASSWORD = "aapmSenai#";
+const char *SSID = "wifi";
+const char *PASSWORD = "senha";
 
 // Configurações do Broker MQTT
 const char *MQTT_HOST = "broker.hivemq.com";
