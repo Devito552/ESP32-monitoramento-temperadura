@@ -1,32 +1,30 @@
-const temperatura = [
-    { id: 1, temperatura: 23.9 },
-    { id: 2, temperatura: 24.1 },
-    { id: 3, temperatura: 24.5 },
-    { id: 4, temperatura: 24.8 },
-]
+let clienteWeb = null;
 
-const umidade = [
-    { id: 1, umidade: 60 },
-    { id: 2, umidade: 62 },
-    { id: 3, umidade: 65 },
-    { id: 4, umidade: 67 },
-]
+const clientId = 'Esp32' + Math.floor(Math.random() * 900) + 100;
+clienteWeb = new Paho.MQTT.Client('broker.hivemq.com', 8884, clientId);
 
-function getRandomTemperatura() {
-    const randomIndex = Math.floor(Math.random() * temperatura.length);
-    return temperatura[randomIndex];
+const temppage = document.getElementById('temperature');
+const humipage = document.getElementById('humidity');
+
+clienteWeb.onMessageArrived = function (message) {
+    const payload = JSON.parse(message.payloadString);
+    if (payload) {
+        if (payload.temperatura !== undefined) {
+            temppage.textContent = payload.temperatura + ' °C';
+        }
+        if (payload.umidade !== undefined) {
+            humipage.textContent = payload.umidade + '%';
+        }
+    }
 }
 
-function getRandomUmidade() {
-    const randomIndex = Math.floor(Math.random() * umidade.length);
-    return umidade[randomIndex];
-}
-function updateData(){
-    const temperaturaElement = document.getElementById('temperature');
-    const randomTemperatura = getRandomTemperatura();
-    temperaturaElement.innerHTML = `${randomTemperatura.temperatura} °C`;
-
-    const umidadeElement = document.getElementById('humidity');
-    const randomUmidade = getRandomUmidade();
-    umidadeElement.innerHTML = `${randomUmidade.umidade} %`;
-}
+clienteWeb.connect({   
+    useSSL: true, 
+    onSuccess: function() {
+        console.log('A conexão com Broker foi bem sucedida')
+        clienteWeb.subscribe('senai928/temperatura');
+    },
+    onFailure: function() {
+        console.log('A conexão com Broker falhou')
+    }
+});

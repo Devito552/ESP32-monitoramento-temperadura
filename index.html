@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Monitoramento</title>
+    <!-- Biblioteca MQTT.js para comunicação com broker MQTT -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 </head>
 
 <body>
@@ -25,12 +27,6 @@
                     <span class="sensor-label">Umidade Atual:</span>
                     <span class="sensor-value" id="humidity">0%</span>
                 </div>
-                <div class="controls">
-                    <button class="update-btn" id="updateBtn" onclick="updateData()">
-                        <span class="btn-icon">🔄</span>
-                        Atualizar
-                    </button>
-                </div>
                 <div class="status">
                     <span class="status-indicator online"></span>
                     <span class="status-text">Sistema Online</span>
@@ -40,5 +36,6 @@
     </div>
 
 </body>
+<script src="mqttws31.js"></script>
 <script src="script.js"></script>
 </html>
